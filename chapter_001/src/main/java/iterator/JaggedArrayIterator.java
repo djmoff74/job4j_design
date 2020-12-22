@@ -11,8 +11,8 @@ import java.util.Iterator;
  */
 public class JaggedArrayIterator implements Iterator {
     private final int[][] array;
-    private int indexArray = 0;
-    private int index = 0;
+    private int Row = 0;
+    private int Column = 0;
 
     public JaggedArrayIterator(int[][] array) {
         this.array = array;
@@ -21,7 +21,7 @@ public class JaggedArrayIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return array.length > indexArray;
+        return array.length > Row;
     }
 
     @Override
@@ -29,10 +29,10 @@ public class JaggedArrayIterator implements Iterator {
         if (!hasNext()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        int rst = array[indexArray][index++];
-        if (array[indexArray].length == index) {
-            indexArray++;
-            index = 0;
+        int rst = array[Row][Column++];
+        if (array[Row].length == Column) {
+            Row++;
+            Column = 0;
         }
         return rst;
     }
