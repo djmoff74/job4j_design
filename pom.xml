@@ -6,7 +6,7 @@
 
     <groupId>ru.job4j</groupId>
     <artifactId>job4j_design</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>3.0</version>
     <modules>
         <module>chapter_001</module>
