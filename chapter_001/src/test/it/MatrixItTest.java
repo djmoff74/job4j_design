@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 
 /**
  * Class MatrixItTest
- *
  * @author Eduard Lykov (djmoff74@gmail.com)
  * @version 1.0
  * @since 22.12.2020
