@@ -7,7 +7,7 @@ package generics;
  * @version 1.0
  * @since 23.12.2020
  */
-public class UserStore extends AbstractStore<User> {
+public class UserStore extends MemStore<User> {
 
     public UserStore(int size) {
         super(size);

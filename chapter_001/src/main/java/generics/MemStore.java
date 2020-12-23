@@ -9,10 +9,10 @@ import java.util.Iterator;
  * @version 1.0
  * @since 23.12.2020
  */
-public abstract class AbstractStore<T extends Base> implements Store<T> {
+public abstract class MemStore<T extends Base> implements Store<T> {
     private SimpleArray<T> list;
 
-    protected AbstractStore(int size) {
+    protected MemStore(int size) {
         this.list = new SimpleArray<>(size);
     }
 
