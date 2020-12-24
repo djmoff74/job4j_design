@@ -20,17 +20,25 @@ import java.util.stream.Collectors;
 
     public FlatMap(Iterator<Iterator<T>> data) {
         this.data = data;
+        this.cursor = new Iterator<>() {
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public T next() {
+                return null;
+            }
+        };
     }
 
     @Override
     public boolean hasNext() {
-        if (cursor != null && cursor.hasNext()) {
-            return true;
-        } else if (data.hasNext()) {
+        while (data.hasNext() && !cursor.hasNext()) {
             cursor = data.next();
-            return true;
         }
-        return false;
+        return cursor.hasNext();
     }
 
     @Override
