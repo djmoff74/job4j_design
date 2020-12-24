@@ -1,5 +1,8 @@
 package it;
 
+import generics.SimpleArray;
+
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -11,23 +14,32 @@ import java.util.NoSuchElementException;
  * @since 23.12.2020
  */
 public class SimpleIterator<T> implements Iterator<T> {
-    private final Object[] array;
-    private int index = 0;
+    private final SimpleArray<T> arrToIterate;
+    private final int arrPosition;
+    private int counter = 0;
 
-    public SimpleIterator(final Object[] array) {
-        this.array = array;
+
+    public SimpleIterator(final SimpleArray<T> arr) {
+        arrToIterate = arr;
+        arrPosition = arr.getIndex();
     }
 
     @Override
     public boolean hasNext() {
-        return this.array.length > index;
+        if (arrPosition != arrToIterate.getIndex()) {
+            throw new ConcurrentModificationException();
+        }
+        return counter < arrPosition;
     }
 
     @Override
     public T next() {
         if (!hasNext()) {
-            throw new NoSuchElementException();
+            throw  new NoSuchElementException();
         }
-        return (T) this.array[index++];
+
+        T element = arrToIterate.get(counter);
+        this.counter++;
+        return element;
     }
 }

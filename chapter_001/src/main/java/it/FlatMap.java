@@ -1,9 +1,6 @@
 package it;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -20,17 +17,7 @@ import java.util.stream.Collectors;
 
     public FlatMap(Iterator<Iterator<T>> data) {
         this.data = data;
-        this.cursor = new Iterator<>() {
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            @Override
-            public T next() {
-                return null;
-            }
-        };
+        this.cursor = Collections.emptyIterator();
     }
 
     @Override

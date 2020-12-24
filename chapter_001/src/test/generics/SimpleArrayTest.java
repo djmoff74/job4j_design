@@ -28,15 +28,6 @@ public class SimpleArrayTest {
         assertThat(result, is(12));
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void whenAddMoreThanSize()  {
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(12);
-    }
-
     @Test
     public void setCheck() {
         list.add(12);
